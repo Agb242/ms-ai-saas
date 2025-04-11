@@ -30,6 +30,15 @@
   - package.json
   - package-lock.json
 
+### 4. Problème d'affichage tout noir
+- **Date**: 11/04/2024
+- **Description**: L'interface s'affiche en noir complet
+- **Cause**: Configuration incorrecte du thème Material-UI et du CssBaseline
+- **Solution**: Correction de la configuration du thème et ajout de styles de base
+- **Fichiers concernés**: 
+  - src/App.tsx
+  - src/index.css
+
 ## Problèmes en Cours
 
 ### 1. Configuration de Vite
