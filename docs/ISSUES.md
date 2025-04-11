@@ -20,15 +20,15 @@
   - src/App.tsx
   - src/pages/Settings.tsx
 
-### 3. Erreur de dépendance @mui/x-date-pickers
+### 3. Erreur de compatibilité date-fns
 - **Date**: 11/04/2024
-- **Description**: Erreur Vite "Failed to resolve import '@mui/x-date-pickers'"
-- **Cause**: La dépendance n'était pas correctement installée
-- **Solution**: Installation de la dépendance avec la version spécifique
-- **Commande utilisée**: `npm install @mui/x-date-pickers@6.19.5`
+- **Description**: Erreur "Missing './_lib/format/longFormatters' specifier in date-fns"
+- **Cause**: Incompatibilité entre les versions de date-fns et @mui/x-date-pickers
+- **Solution**: Installation de la version 2.30.0 de date-fns
+- **Commande utilisée**: `npm install date-fns@2.30.0`
 - **Fichiers concernés**: 
   - package.json
-  - src/App.tsx
+  - package-lock.json
 
 ## Problèmes en Cours
 
@@ -57,6 +57,7 @@
    - Utiliser le mode développement pour détecter les erreurs rapidement
    - Consulter les logs d'erreur Vite pour identifier les problèmes d'importation
    - Installer les dépendances manquantes avec des versions spécifiques
+   - Vérifier la compatibilité entre les dépendances
 
 3. **Documentation**
    - Mettre à jour ce fichier pour chaque nouveau problème rencontré
@@ -84,4 +85,7 @@ npx tsc --noEmit
 
 # Installer une dépendance spécifique
 npm install <package>@<version>
+
+# Vérifier les versions des dépendances
+npm list <package>
 ``` 
