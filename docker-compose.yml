@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: smsai
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  backend:
+    build: ./backend
+    volumes:
+      - ./backend:/app
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/smsai
+      - SECRET_KEY=your-secret-key
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+
+  kannel:
+    image: kannel/kannel
+    volumes:
+      - ./kannel.conf:/etc/kannel/kannel.conf
+    ports:
+      - "13000:13000"
+      - "13001:13001"
+      - "13013:13013"
+    devices:
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
+
+volumes:
+  postgres_data: 
